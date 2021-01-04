@@ -71,7 +71,8 @@ d3.json("static/js/data.json").then((data) => {
         }
     
     // Call getData()
-    d3.selectAll("#selDisaster").on("change", getData);
+    d3.selectAll("#selDisaster").on("click", getData);
+    document.getElementById("selDisaster").click();
 
     // Create getData()
     function getData() {
@@ -82,7 +83,7 @@ d3.json("static/js/data.json").then((data) => {
         var index = uniquedisasters.indexOf(dataset);
         //console.log(index);
         var specificdata = cleanlist[index];
-        console.log(specificdata);
+        //console.log(specificdata);
         var space = d3.select(".panel-body");
         space.html("");
         space.append("li").text(`Disaster Number: ${specificdata.disasterNumber}`);
