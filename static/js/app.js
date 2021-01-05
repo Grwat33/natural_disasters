@@ -103,20 +103,18 @@ d3.json("static/js/data.json").then((data) => {
 
 
     Plotly.newPlot('myDiv', [{
-      type: 'scattermapbox',
-      lat: [0],
-      lon: [0]
+      type: 'scattermapbox'
     }], {
       title: "FIPS Map",
       height: 600,
       width: 600,
       mapbox: {
         center: {
-          lat: 28,
-          lon: -84
+          lat: 35,
+          lon: -95
         },
         style: 'light',
-        zoom: 4.8
+        zoom: 2.25
       }
     }, {
       mapboxAccessToken: 'pk.eyJ1IjoiZ3J3YXQzMyIsImEiOiJja2lzMmV4cGUxc3M2MndvODR6YWs2cnl4In0.MrGype25gR61KiJcqHVyvw'
