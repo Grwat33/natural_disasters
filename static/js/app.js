@@ -98,17 +98,13 @@ d3.json("static/js/data.json").then((data) => {
         space.append("li").text(`Disaster Begin Date: ${specificdata.incidentBeginDate}`);
         space.append("li").text(`Disaster End Date: ${specificdata.incidentEndDate}`);
     
-        var fipCode = specificdata.fipsStateCode.concat(specificdata.fipsCountyCode);
-        console.log(fipCode);
-
-
         var data = [{
-            type: "choroplethmapbox", locations: [specificdata.state], z: [-50],
+            type: "choroplethmapbox", locations: [specificdata.state], z: [-50], coloraxis: "coloraxis",
             geojson: "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data/us-states.json"
           }];
           
-        var layout = {mapbox: {center: {lon: -95, lat: 38}, zoom: 2},
-                        width: 600, height:400};
+        var layout = {mapbox: {center: {lon: -95, lat: 45}, zoom: 1.5}, coloraxis: {showscale: false},
+                        width: 1000, height:600};
           
         var config = {mapboxAccessToken: "pk.eyJ1IjoiZ3J3YXQzMyIsImEiOiJja2lzMmV4cGUxc3M2MndvODR6YWs2cnl4In0.MrGype25gR61KiJcqHVyvw"};
           
