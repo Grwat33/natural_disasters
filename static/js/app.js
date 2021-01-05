@@ -102,23 +102,18 @@ d3.json("static/js/data.json").then((data) => {
         console.log(fipCode);
 
 
-    Plotly.newPlot('myDiv', [{
-      type: 'scattermapbox'
-    }], {
-      title: "FIPS Map",
-      height: 600,
-      width: 600,
-      mapbox: {
-        center: {
-          lat: 35,
-          lon: -95
-        },
-        style: 'light',
-        zoom: 2.25
-      }
-    }, {
-      mapboxAccessToken: 'pk.eyJ1IjoiZ3J3YXQzMyIsImEiOiJja2lzMmV4cGUxc3M2MndvODR6YWs2cnl4In0.MrGype25gR61KiJcqHVyvw'
-    });
+        var data = [{
+            type: "choroplethmapbox", locations: [specificdata.state], z: [-50],
+            geojson: "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data/us-states.json"
+          }];
+          
+        var layout = {mapbox: {center: {lon: -95, lat: 38}, zoom: 2},
+                        width: 600, height:400};
+          
+        var config = {mapboxAccessToken: "pk.eyJ1IjoiZ3J3YXQzMyIsImEiOiJja2lzMmV4cGUxc3M2MndvODR6YWs2cnl4In0.MrGype25gR61KiJcqHVyvw"};
+          
+        Plotly.newPlot('myDiv', data, layout, config);
+    
 
     }
 
