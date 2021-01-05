@@ -97,5 +97,31 @@ d3.json("static/js/data.json").then((data) => {
         space.append("li").text(`Declaration Date: ${specificdata.declarationDate}`);
         space.append("li").text(`Disaster Begin Date: ${specificdata.incidentBeginDate}`);
         space.append("li").text(`Disaster End Date: ${specificdata.incidentEndDate}`);
+    
+        var fipCode = specificdata.fipsStateCode.concat(specificdata.fipsCountyCode);
+        console.log(fipCode);
+
+
+    Plotly.newPlot('myDiv', [{
+      type: 'scattermapbox',
+      lat: [0],
+      lon: [0]
+    }], {
+      title: "FIPS Map",
+      height: 600,
+      width: 600,
+      mapbox: {
+        center: {
+          lat: 28,
+          lon: -84
+        },
+        style: 'light',
+        zoom: 4.8
+      }
+    }, {
+      mapboxAccessToken: 'pk.eyJ1IjoiZ3J3YXQzMyIsImEiOiJja2lzMmV4cGUxc3M2MndvODR6YWs2cnl4In0.MrGype25gR61KiJcqHVyvw'
+    });
+
     }
+
 });

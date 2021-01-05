@@ -7,7 +7,7 @@
           </div>
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Map</a></li>
+            <li><a href="map.html">Map</a></li>
             <li><a href="#">Dataset</a></li>
             <li><a href="#">Graphs</a></li>
             <li><a href="#">About Us</a></li>
@@ -21,12 +21,22 @@
         <h3>Storm Disaster No.</h3>
         <select id="selDisaster"></select>
     </div>
-    <div class="panel panel-default">
+    <div class="panel panel-default" style ="width: 38%">
         <div class="panel-heading" style = "text-decoration: underline">
           <h4 class="panel-title">Disaster Info</h4>
         </div>
         <div id="sample-metadata" class="panel-body"></div>  
       </div>
+      <div class="col-md-5">
+        <div id="myDiv"></div>
+      </div>
+      <head>
+        <!-- Load plotly.js into the DOM -->
+        <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+      </head>
+      <body>
+        <div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
+      </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js" charset="utf-8"></script>
     <script src="./static/js/app.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">

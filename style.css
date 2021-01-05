@@ -4,6 +4,7 @@
     color: white;
     border: black;
     outline: none;
+    width: auto;
 
 }
 
@@ -13,10 +14,12 @@
     color: black;
     border:white;
     outline: none;
+    width: auto;
 
 }
 
 .panel-default > .panel-title {
     outline: none;
+    width: auto;
 
 }
