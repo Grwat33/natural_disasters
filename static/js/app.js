@@ -109,7 +109,15 @@ d3.json("static/js/data.json").then((data) => {
         var config = {mapboxAccessToken: "pk.eyJ1IjoiZ3J3YXQzMyIsImEiOiJja2lzMmV4cGUxc3M2MndvODR6YWs2cnl4In0.MrGype25gR61KiJcqHVyvw"};
           
         Plotly.newPlot('myDiv', data, layout, config);
-    
+        
+        var astate = cleanlist.map(object => object.state);
+        const countOccurrences = arr => arr.reduce((prev, curr) => (prev[curr] = ++prev[curr] || 1, prev), {});
+        var occ = [countOccurrences(astate)];
+        console.log(occ);
+
+        var ak = occ.map(object => object.AK);
+        console.log(ak);
+        
 
     }
 

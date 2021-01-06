@@ -1,10 +1,33 @@
+.well{
+    margin-left: 50px;
+    margin-top: 60px;
+    border:0;
+}
+
+.panel-default{
+    background-image: none;
+    background-color: black;
+    color: white;
+    border: none;
+    outline: none;
+    width: auto;
+    height:auto;
+    margin-left: 50px;
+    margin-bottom:0px;
+    margin-top: 0px;
+
+}
+
 .panel-default > .panel-heading {
     background-image: none;
     background-color: black;
     color: white;
-    border: black;
+    border: none;
     outline: none;
     width: auto;
+    height:auto;
+    margin-bottom:0px;
+    margin-top: 0px;
 
 }
 
@@ -12,14 +35,34 @@
     background-image: none;
     background-color: white;
     color: black;
-    border:white;
+    border:none;
     outline: none;
     width: auto;
+    margin-bottom:0px;
+    height:auto;
+    margin-top: 0px;
 
 }
 
 .panel-default > .panel-title {
     outline: none;
+    border:none;
     width: auto;
+    margin-bottom:0px;
+    height:auto;
+    margin-top: 0px;
+}
 
+.panel-default{
+    margin-bottom:0px;
+}
+
+.logo{
+    margin-top:0px;
+}
+
+.myDiv{
+    margin-right:100px;
+    position: fixed;
+    right: 300px;
 }
