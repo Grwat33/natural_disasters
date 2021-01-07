@@ -33,14 +33,7 @@ d3.json("static/js/data.json").then((data) => {
     
     // found indices of entries we wanted to keep 
     var tornado = incidentType.map((e, i) => e === 'Tornado' ? i : '').filter(String);
-    var flood = incidentType.map((e, i) => e === 'Flood' ? i : '').filter(String);
-    var hurricane = incidentType.map((e, i) => e === 'Hurricane' ? i : '').filter(String);
-    var fire = incidentType.map((e, i) => e === 'Fire' ? i : '').filter(String);
-    var earthquake = incidentType.map((e, i) => e === 'Earthquake' ? i : '').filter(String);
-    var volcano = incidentType.map((e, i) => e === 'Volcano' ? i : '').filter(String);
-    var drought = incidentType.map((e, i) => e === 'Drought' ? i : '').filter(String);
-    
-    var indices = tornado.concat(flood,hurricane,fire,earthquake,volcano,drought);
+    var indices = tornado;
     indices = indices.sort((a,b) => a-b);
 
     // put clean data all together based on indices
@@ -59,19 +52,17 @@ d3.json("static/js/data.json").then((data) => {
         ]
     }
     cleanlist = unique(cleanlist, it => it.disasterNumber);
-    
-    console.log(cleanlist);
 
     var uniquedisasters = cleanlist.map(object => object.disasterNumber);
 
     // Fill in dropdown menu and update page
-    var dropdown = document.getElementById("selDisaster");
-        for (var i = 0; i < uniquedisasters.length; ++i) {
-        dropdown[dropdown.length] = new Option(uniquedisasters[i], uniquedisasters[i]);
-        }
+       var dropdown = document.getElementById("selDisaster");
+       for (var i = 0; i < uniquedisasters.length; ++i) {
+       dropdown[dropdown.length] = new Option(uniquedisasters[i], uniquedisasters[i]);
+       }
     
     // Call getData()
-    d3.selectAll("#selDisaster").on("click", getData);
+     d3.selectAll("#selDisaster").on("click", getData);
     document.getElementById("selDisaster").click();
 
     // Create getData()
@@ -113,20 +104,17 @@ d3.json("static/js/data.json").then((data) => {
         var astate = cleanlist.map(object => object.state);
         const countOccurrences = arr => arr.reduce((prev, curr) => (prev[curr] = ++prev[curr] || 1, prev), {});
         var occ = [countOccurrences(astate)];
-        console.log(occ);
-
-        var ak = occ.map(object => object.AK);
-        console.log(ak);
-
-        function filter(arr, criteria) {
-            return arr.filter(function(obj) {
-              return Object.keys(criteria).every(function(c) {
-                return obj[c] == criteria[c];
-              });
-            });
-          }
+         function filter(arr, criteria) {
+             return arr.filter(function(obj) {
+               return Object.keys(criteria).every(function(c) {
+                 return obj[c] == criteria[c];
+               });
+             });
+           }
         
-
+        var arr = cleanlist;
+        var tornados = filter(arr, {incidentType: 'Tornado'})
+        console.log(tornados);
     }
 
 });
