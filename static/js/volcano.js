@@ -32,8 +32,8 @@ d3.json("static/js/data.json").then((data) => {
               'state' : state[j]});
     
     // found indices of entries we wanted to keep 
-    var tornado = incidentType.map((e, i) => e === 'Tornado' ? i : '').filter(String);
-    var indices = tornado;
+    var volcano = incidentType.map((e, i) => e === 'Volcano' ? i : '').filter(String);
+    var indices = volcano;
     indices = indices.sort((a,b) => a-b);
 
     // put clean data all together based on indices
