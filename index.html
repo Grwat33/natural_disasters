@@ -3,14 +3,28 @@
   <div id="wrapper">
 
   <head>
+    <title>United States Natural Disaster Tracker</title>
     <meta charset="UTF-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js" charset="utf-8"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js" charset="utf-8"></script>
+    <script src="./static/js/app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+    
+    
   </head>
 
-<body style="background-color:rgb(172, 158, 156);">
+<body style="background-color:rgb(255, 255, 255);">
+    
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header" style="border:none; height: auto">
@@ -21,7 +35,7 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Storm
               <span class="caret"></span></a>
-              <ul class="dropdown-menu" style="border:black; height: auto">
+              <ul class="dropdown-menu" style="border:rgb(107, 0, 134); height: auto">
                 <li><a href="tornado.html">Tornado</a></li>
                 <li><a href="flood.html">Flood</a></li>
                 <li><a href="hurricane.html">Hurricane</a></li>
@@ -37,28 +51,83 @@
           </ul>
         </div>
     </nav>
-    <div><marquee behavior="scroll" direction="right" style="color:white; background-color: black; width:100%">Warning: Storm Incoming!</marquee>
+    <div><marquee behavior="scroll" direction="right" style="color:white; background-color: black; width:100%"><h4>Welcome to the FEMA disaster tracker</h4></marquee>
     </div>
     <div class = "logo" style="text-align: center; height:100%; width:100%; text-decoration: underline; font-family: arial; background-image: url(https://giffiles.alphacoders.com/178/17858.gif); background-size:100% 100%">
         <img src= "https://facilityexecutive.com/wp-content/uploads/2018/05/FEJune18-FMIssueSidebar-Feature.jpg" height = "100%" width = "20%" class = "center">
     </div>
-    <div id='myDiv' style="margin-left:5%; margin-top:5%; margin-bottom: 10%; margin-right:5%; float:right" ></div>
-    <div class="well" style="background-color:white; width:22%;margin-top:5%">
-        <h3 style="font-family: verdana; background-color:white;color:black;width:100%;text-align:center; border: white">Storm Disaster No.</h3>
-        <select id="selDisaster" style="width:auto; text-align:center"></select>
+
+<h1><center>United States Natural Disaster Tracker</center></h1>
+<br><br>
+
+
+<main class="container">
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+      <div class="col-md-7 px-0">
+        <h1 class="display-4 font-italic">What is a natural disaster?</h1>
+        <p class="lead my-3">
+            Natural disasters are catastrophic events with atmospheric, geological, and hydrological origina that can cause fatalities, property damage and social environmental disruption.
+        <h1 class="display-4 font-italic">How does FEMA declare a disaster?</h1>
+        <p class="lead my-3">
+            Requests for disaster declaration are made by the Governor of the State affected by the disaster and then approved by the President of the United States.
+            State also includes the District of Columbia, Puerto Rico, the Virgin Islands, Guam, American Samoa, and the Commonwealth of the Northern Mariana Islands.
+            Also eligible to request a declaration and receive assistance are the Federated States of Micronesia and the Republic of Marshall Islands.</p>
+        <h1 class="display-4 font-italic">Data clean up</h1>
+        <p class="lead my-3">
+            We obtained our dataset from Fema.gov, the website for the Federal Emergency Management Agency.  The website provides open datasets to the public in multiple formats.  We selected the FEMA Disaster Declarations Summary, which describes all official FEMA Disaster Declarations, beginning with the first disaster declaration in 1953.  The dataset is primarily composed of historical data that was manually entered into FEMA’s National Emergency Management Information System (NEMIS) after it was launched in 1998.
+<br>
+We downloaded the data set for Disaster Declarations Summaries in a csv format.  This data set contains 60,477 rows and 24 columns.  The dataset contains data from all 50 US states, the District of Columbia, and US territories American Samoa, Federated States of Micronesia, Guam, Northern Mariana Islands, Marshall Islands, Puerto Rico, Palau, and the US Virgin Islands.  The original dataset has records from May 2, 1953 to December 11, 2020.
+<br>
+We wanted to reduce our dataset to simplify the mapping options, so we removed certain types of disasters.  We removed the following disaster types:  Biological, Chemical, Coastal Storm, Dam/Levee Break, Fishing Losses, Freezing, Human Cause, Mud/Landslide, Other, Severe Ice Storm, Severe Storm(s), Snow, Terrorist, Toxic Substances, Tsunami and Typhoon.  The remaining disaster types are:  Flood, Hurricane, Fire, Earthquake, Tornado, Volcano, and Drought.  This brought our data set to 28,836 records.  We lost Palau in the cleanup process, as it only appeared once in our list for a 1990 typhoon.
+<br>
+We did not remove any columns from our dataset.  Our data contained FIPS (Federal Information Processing Series) codes for cities and states, which we found useful in mapping, as they identify unique geographical locations.
+
+      </div>
     </div>
-        <div class="panel panel-default" style ="width: 22%;height:300px;background-color:rgb(116, 110, 109); border: 0; height:30%">
-          <div class="panel-heading" style = "height:5%;text-align: left; text-decoration: underline; width: auto">
-            <h4 class="panel-title">Disaster Info</h4>
+
+    <main class="container">
+        <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+          <div class="col-md-5 px-0">
+            <h1 class="display-4 font-italic">Maps</h1>
+            <p class="lead my-3">Please select from the declarations below</p>
+            <a href="tornado.html"><img width="200" class="float-left" src="static\images\tornado.png" class="rounded float-left" alt="Tornado"></a>
+            <a href="flood.html"><img width="200" class="float-left" src="static\images\flood.png" class="rounded float-right" alt="Flood"></a>
+            <a href="hurricane.html"><img width="200" class="float-left" src="static\images\hurricane2.jpg" class="rounded float-left" alt="Huricane"></a>
+            <a href="fire.html"><img width="200" class="float-left" src="static\images\fire.png" class="rounded float-right" alt="Fire"></a>
+            <a href="earthquake.html"><img width="200" class="float-left" src="static\images\earthquake.png" class="rounded float-right" alt="Earthquake"></a>
+            <a href="volcano.html"><img width="200" class="float-left" src="static\images\volcano.png" class="rounded float-right" alt="Volcano"></a>
+            <a href="drought.html"><img width="200" class="float-left" src="static\images\drought.png" class="rounded float-right" alt="Drought"></a>
+            <p class="lead mb-0"><a href="map.html" class="text-white fw-bold">Click here for all sortable data</a></p>
           </div>
-          <div id="sample-metadata" class="panel-body" style="height:250px;margin-bottom:5%;color:black"></div>
         </div>
-    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js" charset="utf-8"></script>
-    <script src="./static/js/app.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css"></body>
-  </div>
+
+
+
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
