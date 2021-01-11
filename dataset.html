@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div id="wrapper">
+
+  <head>
+    <title>United States Natural Disaster Tracker</title>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js" charset="utf-8"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js" charset="utf-8"></script>
+    <script src="./static/js/app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+    
+    
+  </head>
+
+<body style="background-color:rgb(255, 255, 255);">
+    
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header" style="border:none; height: auto">
+            <a class="navbar-brand"></a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html" style="border:none; height: auto">Home</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Storm
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu" style="border:rgb(107, 0, 134); height: auto">
+                <li><a href="tornado.html">Tornado</a></li>
+                <li><a href="flood.html">Flood</a></li>
+                <li><a href="hurricane.html">Hurricane</a></li>
+                <li><a href="fire.html">Fire</a></li>
+                <li><a href="earthquake.html">Earthquake</a></li>
+                <li><a href="volcano.html">Volcano</a></li>
+                <li><a href="drought.html">Drought</a></li>
+              </ul>
+            </li>
+            <li><a href="map.html">Map</a></li>
+            <li><a href="dataset.html">Dataset</a></li>
+            <li><a href="graphs.html">Graphs</a></li>
+            
+          </ul>
+        </div>
+    </nav>
+    <!-- <div><marquee behavior="scroll" direction="right" style="color:white; background-color: black; width:100%"><h4>Welcome to the FEMA disaster tracker</h4></marquee> -->
+    </div>
+    <div class = "logo" style="text-align: center; height:100%; width:100%; text-decoration: underline; font-family: arial; background-image: url(https://giffiles.alphacoders.com/178/17858.gif); background-size:100% 100%">
+        <img src= "https://facilityexecutive.com/wp-content/uploads/2018/05/FEJune18-FMIssueSidebar-Feature.jpg" height = "100%" width = "20%" class = "center">
+    </div>
+
+    <h1><center>United States Natural Disaster Tracker</center></h1>
+<br><br>
+<main class="container">
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+      <div class="col-md-12 px-0">
+        <h1 class="display-4 font-italic">What is a natural disaster?</h1>
+        <p class="lead my-3">
+            We obtained our dataset from Fema.gov, the website for the Federal Emergency Management Agency. The website provides open datasets to the public in multiple formats. We selected the FEMA Disaster Declarations Summary, which describes all official FEMA Disaster Declarations, beginning with the first disaster declaration in 1953. The dataset is primarily composed of historical data that was manually entered into FEMA’s National Emergency Management Information System (NEMIS) after it was launched in 1998.<Br>
+            We downloaded the data set for Disaster Declarations Summaries in a csv format. This data set contains 60,477 rows and 24 columns. The dataset contains data from all 50 US states, the District of Columbia, and US territories American Samoa, Federated States of Micronesia, Guam, Northern Mariana Islands, Marshall Islands, Puerto Rico, Palau, and the US Virgin Islands. The original dataset has records from May 2, 1953 to December 11, 2020.<Br>
+            We wanted to reduce our dataset to simplify the mapping options, so we removed certain types of disasters. We removed the following disaster types: Biological, Chemical, Coastal Storm, Dam/Levee Break, Fishing Losses, Freezing, Human Cause, Mud/Landslide, Other, Severe Ice Storm, Severe Storm(s), Snow, Terrorist, Toxic Substances, Tsunami and Typhoon. The remaining disaster types are: Flood, Hurricane, Fire, Earthquake, Tornado, Volcano, and Drought. This brought our data set to 28,836 records. We lost Palau in the cleanup process, as it only appeared once in our list for a 1990 typhoon.<Br>
+            We did not remove any columns from our dataset. Our data contained FIPS (Federal Information Processing Series) codes for cities and states, which we found useful in mapping, as they identify unique geographical locations. <Br>
