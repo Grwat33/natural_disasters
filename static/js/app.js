@@ -60,30 +60,68 @@ d3.json("static/js/data.json").then((data) => {
     }
     cleanlist = unique(cleanlist, it => it.disasterNumber);
     
-    console.log(cleanlist);
+    //console.log(cleanlist);
 
     var uniquedisasters = cleanlist.map(object => object.disasterNumber);
+    state = cleanlist.map(object => object.state);
 
     // Fill in dropdown menu and update page
-    var dropdown = document.getElementById("selDisaster");
-        for (var i = 0; i < uniquedisasters.length; ++i) {
-        dropdown[dropdown.length] = new Option(uniquedisasters[i], uniquedisasters[i]);
+
+    var singlestates = Array.from(new Set(state));
+    singlestates = singlestates.sort();
+
+    var statedropdown = document.getElementById("byState");
+        numberdropdown = document.getElementById("selDisaster");
+        for (var i = 0; i < singlestates.length; ++i) {
+        statedropdown[statedropdown.length] = new Option(singlestates[i], singlestates[i]);
         }
+
     
     // Call getData()
     d3.selectAll("#selDisaster").on("click", getData);
     document.getElementById("selDisaster").click();
 
+    d3.selectAll("#byState").on("click", getstateData);
+    document.getElementById("byState").click();
+    //console.log(cleanlist)
+
+    //the state function populates the other dropdown
+
+    function getstateData () {
+        var statedropdownMenu = d3.select("#byState");
+        var chosenstate = statedropdownMenu.property("value");
+        var statedata = state.map((e, i) => e === chosenstate ? i : '').filter(String);
+
+        temp = [];
+        for (i= 0; i<statedata.length; i++) {
+            temp.push(cleanlist[statedata[i]])
+        }
+        console.log(temp);
+
+        var statedisasternumbers = temp.map(object => object.disasterNumber);
+        
+        var select = document.getElementById("selDisaster");
+        var length = select.options.length;
+        for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+        }
+
+        numberdropdown = document.getElementById("selDisaster");
+        for (var i = 0; i < statedisasternumbers.length; ++i) {
+        numberdropdown[numberdropdown.length] = new Option(statedisasternumbers[i], statedisasternumbers[i]);
+        }
+        document.getElementById("selDisaster").click();
+
+    }
+
     // Create getData()
     function getData() {
+
         var dropdownMenu = d3.select("#selDisaster");
         var dataset = dropdownMenu.property("value");
         dataset = parseInt(dataset, 10);
-        //console.log(dataset);
         var index = uniquedisasters.indexOf(dataset);
-        //console.log(index);
         var specificdata = cleanlist[index];
-        //console.log(specificdata);
         var space = d3.select(".panel-body");
         space.html("");
         space.append("li").text(`Disaster Number: ${specificdata.disasterNumber}`);
@@ -99,7 +137,7 @@ d3.json("static/js/data.json").then((data) => {
         space.append("li").text(`Disaster End Date: ${specificdata.incidentEndDate}`);
     
         var data = [{
-            type: "choroplethmapbox", locations: [specificdata.state], z: [-50], coloraxis: "coloraxis",
+            type: "choroplethmapbox", locations: [specificdata.state], z: [50], coloraxis: "coloraxis", hoverinfo: "none",
             geojson: "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data/us-states.json"
           }];
           
@@ -108,25 +146,10 @@ d3.json("static/js/data.json").then((data) => {
           
         var config = {mapboxAccessToken: "pk.eyJ1IjoiZ3J3YXQzMyIsImEiOiJja2lzMmV4cGUxc3M2MndvODR6YWs2cnl4In0.MrGype25gR61KiJcqHVyvw"};
           
-        Plotly.newPlot('myDiv', data, layout, config);
-        
-        var astate = cleanlist.map(object => object.state);
-        const countOccurrences = arr => arr.reduce((prev, curr) => (prev[curr] = ++prev[curr] || 1, prev), {});
-        var occ = [countOccurrences(astate)];
-        console.log(occ);
-
-        var ak = occ.map(object => object.AK);
-        console.log(ak);
-
-        function filter(arr, criteria) {
-            return arr.filter(function(obj) {
-              return Object.keys(criteria).every(function(c) {
-                return obj[c] == criteria[c];
-              });
-            });
-          }
+        Plotly.newPlot('myDiv', data, layout, config);      
+        }
         
 
     }
 
-});
+);

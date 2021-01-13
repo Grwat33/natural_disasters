@@ -67,6 +67,11 @@ d3.json("static/js/data.json").then((data) => {
 
     // Create getData()
     function getData() {
+
+        var flood = incidentType.map((e, i) => e === 'Flood' ? i : '').filter(String);
+        var indices = flood;
+        indices = indices.sort((a,b) => a-b);
+        
         var dropdownMenu = d3.select("#selDisaster");
         var dataset = dropdownMenu.property("value");
         dataset = parseInt(dataset, 10);
@@ -90,7 +95,7 @@ d3.json("static/js/data.json").then((data) => {
         space.append("li").text(`Disaster End Date: ${specificdata.incidentEndDate}`);
     
         var data = [{
-            type: "choroplethmapbox", locations: [specificdata.state], z: [-50], coloraxis: "coloraxis",
+            type: "choroplethmapbox", locations: [specificdata.state], z: [-50], coloraxis: "coloraxis", hoverinfo: "none",
             geojson: "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data/us-states.json"
           }];
           
