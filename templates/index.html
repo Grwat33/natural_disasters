@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div id="wrapper">
+
+  <head>
+    <title>United States Natural Disaster Tracker</title>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js" charset="utf-8"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js" charset="utf-8"></script>
+    <script src="./static/js/app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+    
+    
+  </head>
+
+<body style="background-color:rgb(255, 255, 255);">
+    
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header" style="border:none; height: auto">
+            <a class="navbar-brand"></a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html" style="border:none; height: auto">Home</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Disaster
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu" style="border:rgb(107, 0, 134); height: auto">
+                <li><a href="tornado.html">Tornado</a></li>
+                <li><a href="flood.html">Flood</a></li>
+                <li><a href="hurricane.html">Hurricane</a></li>
+                <li><a href="fire.html">Fire</a></li>
+                <li><a href="earthquake.html">Earthquake</a></li>
+                <li><a href="volcano.html">Volcano</a></li>
+                <li><a href="drought.html">Drought</a></li>
+              </ul>
+            </li>
+            <li><a href="map.html">Map</a></li>
+            <li><a href="dataset.html">Dataset</a></li>
+            <li><a href="graphs.html">Graphs</a></li>
+            
+          </ul>
+        </div>
+    </nav>
+    <!-- <div><marquee behavior="scroll" direction="right" style="color:white; background-color: black; width:100%"><h4>Welcome to the FEMA disaster tracker</h4></marquee> -->
+    </div>
+    <div class = "logo" style="text-align: center; height:100%; width:100%; text-decoration: underline; font-family: arial; background-image: url(https://giffiles.alphacoders.com/178/17858.gif); background-size:100% 100%">
+        <img src= "https://facilityexecutive.com/wp-content/uploads/2018/05/FEJune18-FMIssueSidebar-Feature.jpg" height = "100%" width = "20%" class = "center">
+    </div>
+
+<h1><center>United States Natural Disaster Tracker</center></h1>
+<br><br>
+
+
+<main class="container">
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+      <div class="col-md-7 px-0">
+        <h1 class="display-4 font-italic">What is a natural disaster?</h1>
+        <p class="lead my-3">
+            Natural disasters are catastrophic events with atmospheric, geological, and hydrological origina that can cause fatalities, property damage and social environmental disruption.
+        <h1 class="display-4 font-italic">How does FEMA declare a disaster?</h1>
+        <p class="lead my-3">
+            Requests for disaster declaration are made by the Governor of the State affected by the disaster and then approved by the President of the United States.
+            State also includes the District of Columbia, Puerto Rico, the Virgin Islands, Guam, American Samoa, and the Commonwealth of the Northern Mariana Islands.
+            Also eligible to request a declaration and receive assistance are the Federated States of Micronesia and the Republic of Marshall Islands.</p>
+    
+      </div>
+    </div>
+
+    <main class="container">
+        <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+          <div class="col-md-5 px-0">
+            <h1 class="display-4 font-italic">Maps</h1>
+            <p class="lead my-3">Please select from the declarations below</p>
+            <a href="tornado.html"><img width="200" class="float-left" src="static\images\tornado.png" class="rounded float-left" alt="Tornado"></a>
+            <a href="flood.html"><img width="200" class="float-left" src="static\images\flood.png" class="rounded float-right" alt="Flood"></a>
+            <a href="hurricane.html"><img width="200" class="float-left" src="static\images\hurricane2.jpg" class="rounded float-left" alt="Huricane"></a>
+            <a href="fire.html"><img width="200" class="float-left" src="static\images\fire.png" class="rounded float-right" alt="Fire"></a>
+            <a href="earthquake.html"><img width="200" class="float-left" src="static\images\earthquake.png" class="rounded float-right" alt="Earthquake"></a>
+            <a href="volcano.html"><img width="200" class="float-left" src="static\images\volcano.png" class="rounded float-right" alt="Volcano"></a>
+            <a href="drought.html"><img width="200" class="float-left" src="static\images\drought.png" class="rounded float-right" alt="Drought"></a>
+            <p class="lead mb-0"><a href="map.html" class="text-white fw-bold">Click here for all sortable data</a></p>
+          </div>
+        </div>
+
+
+
+</body>
+</html>
