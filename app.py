@@ -5,7 +5,9 @@ from os import environ
 
 app = Flask(__name__)
 
-app.config['MONGO_URI'] = environ.get('MONGODB_URI', 'mongodb+srv://Grwat33:Oscarjoy0305!@cluster0.hhcym.mongodb.net/Cluster0?retryWrites=true&w=majority')
+#app.config['MONGO_URI'] = environ.get('MONGODB_URI', 'mongodb+srv://Grwat33:Oscarjoy0305!@cluster0.hhcym.mongodb.net/notepad?retryWrites=true&w=majority')
+app.config['MONGO_URI'] = environ.get('MONGODB_URI', 'mongodb+srv://Grwat33:Oscarjoy0305!@cluster0.hhcym.mongodb.net/notepad?retryWrites=true&w=majority')
+
 
 mongo = PyMongo(app)
 
