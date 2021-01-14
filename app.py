@@ -27,43 +27,43 @@ class Task(db.Model):
 def index():
     return render_template('index.html')
 
-@app.route('/dataset')
+@app.route('/dataset.html')
 def dataset():
     return render_template('dataset.html')
 
-@app.route('/drought')
+@app.route('/drought.html')
 def drought():
     return render_template('drought.html')
 
-@app.route('/earthquake')
+@app.route('/earthquake.html')
 def earthquake():
     return render_template('earthquake.html')
 
-@app.route('/fire')
+@app.route('/fire.html')
 def fire():
     return render_template('fire.html')
 
-@app.route('/flood')
+@app.route('/flood.html')
 def flood():
     return render_template('flood.html')
 
-@app.route('/graphs')
+@app.route('/graphs.html')
 def graphs():
     return render_template('graphs.html')
 
-@app.route('/hurricane')
+@app.route('/hurricane.html')
 def hurricane():
     return render_template('hurricane.html')
 
-@app.route('/map')
+@app.route('/map.html')
 def map():
     return render_template('map.html')
 
-@app.route('/tornado')
+@app.route('/tornado.html')
 def tornado():
     return render_template('tornado.html')
 
-@app.route('/volcano')
+@app.route('/volcano.html')
 def volcano():
     return render_template('volcano.html')    
     
