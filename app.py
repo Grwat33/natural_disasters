@@ -27,10 +27,6 @@ class Task(db.Model):
 def index():
     return render_template('index.html')
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
 @app.route('/dataset')
 def dataset():
     return render_template('dataset.html')
