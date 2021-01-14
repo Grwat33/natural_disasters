@@ -27,35 +27,49 @@ class Task(db.Model):
 def index():
     return render_template('index.html')
 
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-@app.route('/api/tasks-postgres')
-def tasksPostGres():
-    tasks = db.session.query(Task)
-    data = []
+@app.route('/dataset')
+def dataset():
+    return render_template('dataset.html')
 
-    for task in tasks:
-        item = {
-            'id': task.id,
-            'description' : task.description
-        }
-        data.append(item)
+@app.route('/drought')
+def drought():
+    return render_template('drought.html')
 
-    return jsonify(data)
+@app.route('/earthquake')
+def earthquake():
+    return render_template('earthquake.html')
 
-@app.route('/api/tasks-mongo')
-def tasksMongo():
-    tasks = mongo.db.tasks.find({})
-    data = []
+@app.route('/fire')
+def fire():
+    return render_template('fire.html')
 
-    for task in tasks:
-        item = {
-            '_id': str(task['_id']),
-            'description': task['description']
-        }
-        data.append(item)
+@app.route('/flood')
+def flood():
+    return render_template('flood.html')
 
-    return jsonify(data)
+@app.route('/graphs')
+def graphs():
+    return render_template('graphs.html')
 
+@app.route('/hurricane')
+def hurricane():
+    return render_template('hurricane.html')
 
+@app.route('/map')
+def map():
+    return render_template('map.html')
+
+@app.route('/tornado')
+def tornado():
+    return render_template('tornado.html')
+
+@app.route('/volcano')
+def volcano():
+    return render_template('volcano.html')    
+    
 if __name__ == '__main__':
     app.run(debug=True)
